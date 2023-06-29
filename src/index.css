@@ -13,8 +13,8 @@
   --color-grey: #898989;
   --color-red: #fa4444;
 
-  --color-tag-PERSON: #c59ff5;
-  --color-tag-ORG: #43c6fc;
-  --color-tag-LANGUAGE: #a0e419;
-  --color-tag-LOC: #ffcc00;
+  --color-label-PERSON: #c59ff5;
+  --color-label-ORG: #43c6fc;
+  --color-label-LANGUAGE: #a0e419;
+  --color-label-LOC: #ffcc00;
 }

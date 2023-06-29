@@ -2,16 +2,18 @@ import React, { useState } from "react";
 
 import "./app.css";
 
+import { Highlight } from "./component/index";
+
 const App = () => {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setOutputText(`${inputText}`);
     console.log(inputText);
     console.log(outputText);
-  }
+  };
 
   return (
     <div className="App col-wrapper">
@@ -23,7 +25,9 @@ const App = () => {
         <div className="wrapper">
           <div className="row-wrapper">
             <h3>Input sentence below</h3>
-            <span style={{ padding: "0 2rem", color: "var(--color-grey)" }}>Or</span>
+            <span style={{ padding: "0 2rem", color: "var(--color-grey)" }}>
+              Or
+            </span>
             <select name="example" id="example" className="dropdown">
               <option value="example-1">Example 1</option>
               <option value="example-2">Example 2</option>
@@ -54,7 +58,10 @@ const App = () => {
             <button className="dropdown">Entity Filter</button>
           </div>
           <div className="text-field wrapper">
-            <p className="output-field">{outputText}</p>
+            <p className="output-field">
+              <Highlight>Test</Highlight>
+              {outputText}
+            </p>
           </div>
         </div>
       </div>
@@ -64,9 +71,8 @@ const App = () => {
           Thành viên nhóm:
           <span style={{ padding: "0 2rem" }}></span>
           <div className="wrapper">
-            Phạm Anh Minh - 20120330
-            <br /> <br />
-            Nguyễn Minh Hiếu - 20120475
+            20120330 - Phạm Anh Minh <br />
+            20120475 - Nguyễn Minh Hiếu
           </div>
         </h6>
       </footer>
