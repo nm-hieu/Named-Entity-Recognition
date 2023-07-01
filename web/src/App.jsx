@@ -58,8 +58,15 @@ const App = () => {
             <button className="dropdown">Entity Filter</button>
           </div>
           <div className="text-field wrapper">
+            {/* 
+            TODO
+            [ ] Read JSON file output
+            [ ] Go to specific index of tag
+            [ ] Wrap tag around text
+            */}
             <p className="output-field">
-              <Highlight>Test</Highlight>
+              {outputText}
+              <Highlight label="ORG">This is an entity</Highlight>
               {outputText}
             </p>
           </div>

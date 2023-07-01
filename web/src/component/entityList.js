@@ -1,22 +1,22 @@
 export const entityList = [
   {
-    label: "PERSON",
+    label: "PER",
     color: "#c59ff5",
     desc: "Person",
   },
   {
     label: "ORG",
-    color: "#43c6fc",
-    desc: "Organization",
-  },
-  {
-    label: "LANGUAGE",
     color: "#a0e419",
-    desc: "Language",
+    desc: "Organization",
   },
   {
     label: "LOC",
     color: "#ffcc00",
     desc: "Location",
+  },
+  {
+    label: "MIS",
+    color: "#43c6fc",
+    desc: "Miscellaneous",
   },
 ];
