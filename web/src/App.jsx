@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import "./app.css";
 
@@ -7,12 +8,29 @@ import { Highlight } from "./component/index";
 const App = () => {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState("");
+  // const [entity, setEntity] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setOutputText(`${inputText}`);
-    console.log(inputText);
-    console.log(outputText);
+    // console.log(inputText);
+    // console.log(outputText);
+    
+    if(inputText === '') {
+      alert("Please input some text!")
+    }
+    else {
+        axios
+        .post("/", { inputText })
+        .then((res) => {
+          console.log(res.data);
+          if (res.data === "success") {
+            console.log('return success');
+          }
+          else alert(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -58,15 +76,9 @@ const App = () => {
             <button className="dropdown">Entity Filter</button>
           </div>
           <div className="text-field wrapper">
-            {/* 
-            TODO
-            [ ] Read JSON file output
-            [ ] Go to specific index of tag
-            [ ] Wrap tag around text
-            */}
             <p className="output-field">
-              {outputText}
-              <Highlight label="ORG">This is an entity</Highlight>
+              {/* <Output input={inputText}>{outputText}</Output> */}
+              {/* <Highlight label="ORG">This is an entity</Highlight> */}
               {outputText}
             </p>
           </div>
