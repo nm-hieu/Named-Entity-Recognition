@@ -35,9 +35,14 @@ Sau khi tải Project từ GitHub về máy local, ta thực hiện các bước
     - Tranformers: Trên terminal gõ lệnh `pip install --user transformers`. Hoặc làm theo hướng dẫn [ở đây](https://huggingface.co/learn/nlp-course/chapter0/1?fw=pt)
     - PyTorch: Trên terminal gõ lệnh `pip install --user torch`. Hoặc làm theo hướng dẫn [ở đây](https://github.com/pytorch/pytorch#from-source)
   - Nếu đã cài đặt đầy đủ thì chuyển sang Bước 2
-- Bước 2: Điều hướng sang folder web, vào terminal gõ lệnh `cd web`
-- Bước 3: Đảm bảo máy thực hiện có đầy đủ các dependency, package, module cần thiết. Nếu chưa có thì qua Terminal để sử dụng lệnh `npm install`, nếu đã cài đặt đầy đủ thì qua Bước 4
-- Bước 4: Cũng trên Terminal, thực hiện lệnh `npm start`. Browser mặc định của máy sẽ host React App trên port 3000
+---
+- Bước 2.1: Điều hướng sang folder model, vào terminal gõ lệnh `cd model`
+- Bước 2.2: Đảm bảo máy thực hiện có đầy đủ các dependency, package, module cần thiết. Nếu chưa có thì qua Terminal để sử dụng lệnh `npm install`, nếu đã cài đặt đầy đủ thì qua Bước 2.3
+- Bước 2.3: Trên Terminal, gõ lệnh `npm run dev`
+---
+- Bước 3.1: Điều hướng sang folder web, vào terminal gõ lệnh `cd ../web`
+- Bước 3.2: Đảm bảo máy thực hiện có đầy đủ các dependency, package, module cần thiết. Nếu chưa có thì qua Terminal để sử dụng lệnh `npm install`, nếu đã cài đặt đầy đủ thì qua Bước 3.3
+- Bước 3.3: Trên Terminal, gõ lệnh `npm start`. Browser mặc định của máy sẽ host React App trên port 3000
 
 ## Demo
 

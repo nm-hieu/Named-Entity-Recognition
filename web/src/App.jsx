@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./app.css";
 
 import axios from "axios";
+import { exampleList } from "./component/exampleList";
 // import { Highlight } from "./component/index";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
   const [outputText, setOutputText] = useState([]);
+  const [example, setExample] = useState("");
 
   const handleChange = (event) => {
     setInputText(event.target.value);
@@ -23,7 +25,7 @@ const App = () => {
       axios
         .post("/api", { inputText })
         .then((res) => {
-          console.log("Model output:", res.data);
+          // console.log("Model output:", res.data);
           setOutputText(res.data);
 
           // let evalData = eval(res.data)
@@ -33,6 +35,23 @@ const App = () => {
         .catch((err) => console.log(err));
     }
   };
+
+  const changeExampleHandler = (event) => {
+    setExample(event.target.value);
+  };
+
+  useEffect(() => {
+    const selectedItem = exampleList.find((item) => item.label === example);
+
+    if (selectedItem === undefined) console.log("Do nothing");
+    else {
+      const { label, content } = selectedItem;
+      console.log("Label:", label);
+      console.log("Content:", content);
+      document.getElementById("model-input").textContent = content;
+      setInputText(content);
+    }
+  }, [example]);
 
   return (
     <div className="App col-wrapper">
@@ -47,10 +66,15 @@ const App = () => {
             <span style={{ padding: "0 2rem", color: "var(--color-grey)" }}>
               Or
             </span>
-            <select name="example" id="example" className="dropdown">
-              <option value="example-1">Example 1</option>
-              <option value="example-2">Example 2</option>
-              <option value="example-3">Example 3</option>
+            <select
+              name="example"
+              id="example"
+              className="dropdown"
+              onChange={changeExampleHandler}
+            >
+              {exampleList.map((example, index) => (
+                <option key={index}>{example.label}</option>
+              ))}
             </select>
           </div>
 
@@ -83,6 +107,9 @@ const App = () => {
                 <div key={index}>{output}</div>
               })} */}
               {outputText}
+              {/* 
+              TODO Make output readable
+              */}
             </p>
           </div>
         </div>
