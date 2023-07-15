@@ -1,33 +1,34 @@
 import React, { useState } from "react";
-import axios from "axios";
-
 import "./app.css";
 
-import { Highlight } from "./component/index";
+import axios from "axios";
+// import { Highlight } from "./component/index";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
-  const [outputText, setOutputText] = useState("");
-  // const [entity, setEntity] = useState("");
+  const [outputText, setOutputText] = useState([]);
+
+  const handleChange = (event) => {
+    setInputText(event.target.value);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setOutputText(`${inputText}`);
-    // console.log(inputText);
-    // console.log(outputText);
-    
-    if(inputText === '') {
-      alert("Please input some text!")
-    }
-    else {
-        axios
-        .post("/", { inputText })
+
+    if (inputText === "") {
+      alert("Please input some text!");
+    } else {
+      setOutputText("Loading...");
+
+      axios
+        .post("/api", { inputText })
         .then((res) => {
-          console.log(res.data);
-          if (res.data === "success") {
-            console.log('return success');
-          }
-          else alert(res.data);
+          console.log("Model output:", res.data);
+          setOutputText(res.data);
+
+          // let evalData = eval(res.data)
+          // console.log("Model output:", evalData);
+          // setOutputText(evalData);
         })
         .catch((err) => console.log(err));
     }
@@ -61,7 +62,7 @@ const App = () => {
                 id="model-input"
                 name="model-input"
                 placeholder="Input goes here..."
-                onChange={(event) => setInputText(event.target.value)}
+                onChange={handleChange}
               />
             </div>
             <button className="button-style" type="submit">
@@ -71,14 +72,16 @@ const App = () => {
         </div>
 
         <div className="wrapper">
-          <div className="row-wrapper space-between">
+          <div className="row-wrapper">
             <h3>Model Output</h3>
-            <button className="dropdown">Entity Filter</button>
           </div>
           <div className="text-field wrapper">
             <p className="output-field">
               {/* <Output input={inputText}>{outputText}</Output> */}
               {/* <Highlight label="ORG">This is an entity</Highlight> */}
+              {/* {outputText.map((output, index) => {
+                <div key={index}>{output}</div>
+              })} */}
               {outputText}
             </p>
           </div>

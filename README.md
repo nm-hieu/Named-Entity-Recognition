@@ -25,6 +25,7 @@ Sau khi tải Project từ GitHub về máy local, ta thực hiện các bước
 
 - Bước 1: 
   - Đảm bảo máy tính đã có cài đặt [Node.js](https://nodejs.org/en). Nếu chưa thì tiến hành tải về cài đặt trên máy tính. 
+  - Đảm bảo máy tính đã có cài đặt [Git LFS](https://git-lfs.com/) để tải các file LFS (Large File Storage) của model
   - Đảm bảo máy tính đã có cài đặt package cần thiết, nếu chưa thì tiến hành cài đặt:
     - Điều hướng qua folder model/output. Gõ lệnh `cd model/output`
     - Trên terminal gõ lệnh `pip install --user -r requirement.txt`
