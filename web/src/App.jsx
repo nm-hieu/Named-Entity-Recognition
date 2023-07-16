@@ -7,7 +7,7 @@ import { exampleList } from "./component/exampleList";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
-  const [outputText, setOutputText] = useState([]);
+  const [outputText, setOutputText] = useState("");
   const [example, setExample] = useState("");
 
   const handleChange = (event) => {
@@ -25,12 +25,11 @@ const App = () => {
       axios
         .post("/api", { inputText })
         .then((res) => {
-          // console.log("Model output:", res.data);
-          setOutputText(res.data);
+          const temp = (res.data).replaceAll("\'","\"")
+          const output = JSON.parse(temp)
+          console.log("Model output:", output)
 
-          // let evalData = eval(res.data)
-          // console.log("Model output:", evalData);
-          // setOutputText(evalData);
+          setOutputText(JSON.stringify(output));
         })
         .catch((err) => console.log(err));
     }
@@ -101,15 +100,11 @@ const App = () => {
           </div>
           <div className="text-field wrapper">
             <p className="output-field">
-              {/* <Output input={inputText}>{outputText}</Output> */}
               {/* <Highlight label="ORG">This is an entity</Highlight> */}
               {/* {outputText.map((output, index) => {
                 <div key={index}>{output}</div>
               })} */}
               {outputText}
-              {/* 
-              TODO Make output readable
-              */}
             </p>
           </div>
         </div>
