@@ -46,4 +46,5 @@ Sau khi tải Project từ GitHub về máy local, ta thực hiện các bước
 
 ## Demo
 
-Link Video: Chưa cập nhập
+Ảnh Demo:
+![Demo Image](/asset/demo_pic.jpeg)
